@@ -1,32 +1,49 @@
-{% extends "_base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
 
-{% block title %}Log_in{% endblock %}
+<head>
+  <title>Login</title><meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'master/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'master/css/bootstrap-responsive.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'master/css/maruti-login.css' %}" />
+</head>
+<body>
+  <div id="loginbox">
+    <form id="loginform" class="form-vertical" action="{% url 'login' %}" method="post">
 
-{% block content %}
-  <h1>Log-in</h1>
-  {% if form.errors %}
-    <p>
-      Your username and password didn't match.
-      Please try again.
-    </p>
-  {% else %}
-    <p>
-      Please, use the following form to log-in.
-      Если у вас нет аккаунта,
-      <a href="{% url "register" %}">зарегистрируйтесь здесь</a>.
-    </p>
-  {% endif %}
-  <div class="login-form">
-    <form action="{% url 'login' %}" method="post">
-      {{ form.as_p }}
-      {% csrf_token %}
-      <input type="hidden" name="next" value="{{ next }}" />
-      <p><input type="submit" value="Log-in"></p>
+
+
+      <div class="control-group">
+        <div class="controls">
+          <div class="main_input_box">
+            <input type="text" placeholder="Username" />
+            <span class="add-on"><i class="icon-user"></i></span>{{ form.username }}
+
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls"
+          <div class="main_input_box">
+            <span class="add-on"><i class="icon-lock"></i></span>{{ form.password }}
+
+          </div>
+        </div>
+        <span class="pull-right">
+
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ next }}" />
+          <input type="submit" class="btn btn-success" value="Login" />
+        </span>
+      </div>
+
     </form>
-    <p>
-      <a href="{% url 'password_reset' %}">
-        Забыли пароль?
-      </a>
-    </p>
   </div>
-{% endblock %}
+
+  <script src="{% static 'master/js/jquery.min.js' %}"></script>
+  <script src="{% static 'master/js/maruti.login.js' %}"></script>
+</body>
+
+</html>
