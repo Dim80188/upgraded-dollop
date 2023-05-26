@@ -1,14 +1,84 @@
 {% extends '_base.html' %}
+{% load static %}
 
 {% block title %}Изменить свой аккаунт{% endblock %}
 
 {% block content %}
-  <h1>Изменить свой аккаунт</h1>
+  <!-- <h1>Изменить свой аккаунт</h1>
   <p>Вы можете редактировать свою учетную запись, используя следующую форму:</p>
   <form method="post" enctype="multipart/form-data">
     {{ user_form.as_p }}
     {{ profile_form.as_p }}
     {% csrf_token %}
     <p><input type="submit" value="Save changes"></p>
-  </form>
+  </form> -->
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+            <h5>Personal-info</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form method="post" class="form-horizontal">
+              <!-- <div class="control-group">
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }} -->
+
+                <label class="control-label">First Name :</label>
+                <div class="controls">
+                  <input type="text" class="span11" name="first_name" placeholder="First name" />
+
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Last Name :</label>
+                <div class="controls">
+                  <input type="text" class="span11" name="last_name" placeholder="Last name" />
+
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Email</label>
+                <div class="controls">
+                  <input type="text"  class="span11" name="email" placeholder="Email"  />
+
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Date of birth :</label>
+                <div class="controls">
+                  <input type="date" class="span11" name="date_of_birth" placeholder="Date of birth" />
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Gender:</label>
+                <div class="controls">
+                  <input type="text" class="span11" name="gender" placeholder="Gender" />
+
+              </div>
+              <div class="control-group">
+                <label class="control-label">Weight :</label>
+                <div class="controls">
+                  <input type="text" class="span11" name="weight" placeholder="Weight" />
+
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Height :</label>
+                <div class="controls">
+                  <input type="text" class="span11" name="height" placeholder="Height" />
+
+                </div>
+              </div>
+              {% csrf_token %}
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success" value="Save changes">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
 {% endblock %}
